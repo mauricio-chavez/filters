@@ -95,3 +95,7 @@ typings/
 # Images
 img/**
 temp/**
+
+# Miscellaneous
+.vscode/
+.DS_Store

@@ -93,8 +93,8 @@ typings/
 .dynamodb/
 
 # Images
-img/**
-temp/**
+img/
+temp/
 
 # Miscellaneous
 .vscode/

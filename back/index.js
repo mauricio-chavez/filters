@@ -4,10 +4,14 @@ const Filter = require('node-image-filter');
 const multer = require('multer')
 const fs = require('fs');
 const path = require('path');
-
+const rimraf = require("rimraf");
 const app = express();
 
 let counter = 0;
+
+rimraf("/temp", function () {
+  console.log("Directory temp/ has been removed");
+});
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -36,10 +40,9 @@ app.post('/filter', upload.single('image'), function (req, res) {
 app.get('/image/:filename', (req, res) => {
   let filename = req.params.filename;
   let pathname = path.join(__dirname, 'img', filename);
-  console.log(pathname);
   res.sendFile(pathname);
 });
 
-app.listen(3000, function () {
+const server = app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
